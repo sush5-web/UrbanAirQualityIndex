@@ -4,7 +4,8 @@ load_dotenv()   # now os.getenv("GEMINI_API_KEY"), etc. will work
 from fastapi import FastAPI # type: ignore
 from pydantic import BaseModel
 from pymongo import MongoClient
-from .services.gemini_client import summarize_with_gemini
+from app.services.gemini_client import summarize_with_gemini
+
 import os
 
 # Load env vars
