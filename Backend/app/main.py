@@ -1,6 +1,10 @@
-from fastapi import FastAPI
+from dotenv import load_dotenv
+load_dotenv()   # now os.getenv("GEMINI_API_KEY"), etc. will work
+
+from fastapi import FastAPI # type: ignore
 from pydantic import BaseModel
 from pymongo import MongoClient
+from .services.gemini_client import summarize_with_gemini
 import os
 
 # Load env vars
@@ -12,6 +16,10 @@ db = client.aqi_db
 
 class AQIRequest(BaseModel):
     city: str
+
+@app.get("/summary/")
+def get_summary(q: str):
+    return {"summary": summarize_with_gemini(q)}
 
 @app.get("/api/current")
 async def get_current_aqi(city: str):
