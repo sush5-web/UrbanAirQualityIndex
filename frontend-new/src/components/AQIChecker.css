@@ -1,54 +1,40 @@
-/* frontend/src/components/AQIChecker.css */
-
-.aqi-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;         /* physical height */
-  width: 100vw;          /* physical width */
-  background: #f9f9f9;
-}
-
-.aqi-form {
-  width: 320px;           /* physical width */
-  padding: 2rem;          /* uniform physical padding */
+.aqi‐checker {
+  max-width: 320px;
+  margin: 2rem auto;
+  padding: 1.5rem;
   background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-.aqi-label {
-  display: block;
-  margin-bottom: 0.5rem;  /* physical margin-bottom */
-  font-weight: 500;
+.aqi‐checker form {
+  display: flex;
+  flex-direction: column;
 }
 
-.aqi-input {
-  width: 100%;            /* physical width */
+.aqi‐checker label {
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.aqi‐checker input {
   padding: 0.5rem;
   font-size: 1rem;
-  margin-bottom: 1rem;    /* physical margin-bottom */
-  box-sizing: border-box;
+  margin-top: 0.25rem;
 }
 
-.aqi-button {
-  width: 100%;            /* physical width */
-  padding: 0.5rem;
+.aqi‐checker button {
+  padding: 0.6rem;
   font-size: 1rem;
   cursor: pointer;
 }
 
-.aqi-button:disabled {
-  cursor: not-allowed;
-  opacity: 0.6;
-}
-
-.aqi-result {
-  margin-top: 1.5rem;     /* physical margin-top */
-  font-size: 1.1rem;
-}
-
-.aqi-error {
-  margin-top: 1rem;       /* physical margin-top */
+.aqi‐error {
+  margin-top: 1rem;
   color: crimson;
+}
+
+.aqi‐result {
+  margin-top: 1rem;
+  font-size: 1.1rem;
 }
