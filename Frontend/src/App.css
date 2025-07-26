@@ -1,0 +1,30 @@
+body, html, #root, .app-container {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: sans-serif;
+}
+
+.app-container {
+  position: relative;
+}
+
+.aqi-box {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  z-index: 999;
+  max-width: 300px;
+}
+
+.search-box {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 999;
+}
