@@ -4,10 +4,15 @@
   "private": true,
   "scripts": {
     "backend": "cd Backend && uvicorn app.main:app --reload --host 0.0.0.0 --port 8000",
-    "frontend": "cd Frontend && npm start",
+    "frontend": "cd Frontend && npm run start:rewired",
+    "start:rewired": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-scripts eject",
     "dev": "concurrently \"npm run backend\" \"npm run frontend\""
   },
   "devDependencies": {
-    "concurrently": "^8.0.0"
+    "concurrently": "^9.2.0",
+    "react-app-rewired": "^2.2.1"
   }
 }

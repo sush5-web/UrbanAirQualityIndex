@@ -1,0 +1,60 @@
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.App {
+  position: absolute;
+  z-index: 10;
+  top: 20px;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.map-container {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+}
+
+.search-box {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.search-box input {
+  padding: 8px;
+  margin-right: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.search-box button {
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: none;
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+}
+
+.error {
+  position: absolute;
+  top: 80px;
+  left: 20px;
+  color: red;
+  background: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  z-index: 11;
+}

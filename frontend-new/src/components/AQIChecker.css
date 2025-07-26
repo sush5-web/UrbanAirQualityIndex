@@ -1,10 +1,10 @@
 .aqi‐checker {
-  max-width: 320px;
+  max-width: 360px;
   margin: 2rem auto;
   padding: 1.5rem;
   background: #fff;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
 }
 
 .aqi‐checker form {
@@ -24,6 +24,7 @@
 }
 
 .aqi‐checker button {
+  margin-top: 1rem;
   padding: 0.6rem;
   font-size: 1rem;
   cursor: pointer;
@@ -37,4 +38,22 @@
 .aqi‐result {
   margin-top: 1rem;
   font-size: 1.1rem;
+}
+
+.aqi‐summary {
+  margin-top: 1.5rem;
+  background: #f5faff;
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+.aqi‐summary h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+}
+
+.aqi‐summary p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
 }
