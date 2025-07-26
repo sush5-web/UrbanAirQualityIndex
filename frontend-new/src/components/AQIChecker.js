@@ -1,26 +1,40 @@
-// frontend/src/components/AQIChecker.js
+// src/components/AQIChecker.js
 import React, { useState } from 'react';
 import './AQIChecker.css';
 
-const AQIChecker = () => {
-  const [city, setCity]       = useState('');
-  const [aqi, setAqi]         = useState(null);
+
+// A little helper to turn the 1–5 index into a category
+const CATEGORY = {
+  1: 'Good',
+  2: 'Fair',
+  3: 'Moderate',
+  4: 'Poor',
+  5: 'Very Poor',
+};
+
+export default function AQIChecker() {
+  const [city, setCity] = useState('');
+  const [aqi, setAqi] = useState(null);
+  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError]     = useState(null);
 
   const fetchAqi = async () => {
     setLoading(true);
     setError(null);
     setAqi(null);
+
     try {
       const res = await fetch(
         `${process.env.REACT_APP_API_URL}/aqi?city=${encodeURIComponent(city)}`
       );
-      if (!res.ok) throw new Error(`Error ${res.status}`);
+      if (!res.ok) {
+        const { detail } = await res.json().catch(() => ({}));
+        throw new Error(detail || `Server returned ${res.status}`);
+      }
       const { aqi } = await res.json();
       setAqi(aqi);
-    } catch {
-      setError('Failed to fetch AQI.');
+    } catch (e) {
+      setError(e.message || 'Failed to fetch AQI.');
     } finally {
       setLoading(false);
     }
@@ -32,39 +46,33 @@ const AQIChecker = () => {
   };
 
   return (
-    <div className="aqi-container">
-      <form onSubmit={handleSubmit} className="aqi-form">
-        <label htmlFor="city" className="aqi-label">
-          Enter city name:
+    <div className="aqi‐checker">
+      <form onSubmit={handleSubmit}>
+        <label>
+          Enter city name or ZIP:
+          <input
+            type="text"
+            value={city}
+            onChange={e => setCity(e.target.value)}
+            placeholder="e.g. London or 94103"
+            required
+          />
         </label>
-        <input
-          id="city"
-          type="text"
-          value={city}
-          onChange={e => setCity(e.target.value)}
-          className="aqi-input"
-        />
-        <button
-          type="submit"
-          disabled={loading}
-          className="aqi-button"
-        >
+        <button type="submit" disabled={loading}>
           {loading ? 'Loading…' : 'Submit'}
         </button>
-
-        {aqi !== null && (
-          <p className="aqi-result">
-            AQI for <strong>{city}</strong>: {aqi}
-          </p>
-        )}
-        {error && (
-          <p className="aqi-error">
-            {error}
-          </p>
-        )}
       </form>
+
+      {error && <p className="aqi‐error">{error}</p>}
+
+      {aqi !== null && !error && (
+        <div className="aqi‐result">
+          <p>
+            <strong>Index:</strong> {aqi} (
+            {CATEGORY[aqi] || 'Unknown'})
+          </p>
+        </div>
+      )}
     </div>
   );
-};
-
-export default AQIChecker;
+}
